@@ -1,0 +1,15 @@
+<script>
+	var mycar={
+		name:'skoda',
+		whichcar:function(){return 'the car is..:'+this.name}
+	}
+	
+	var anothercar=Object.create(mycar);
+	
+	console.log(anothercar.name);
+	
+	var anothercar2=Object.create(mycar,{id:{brand:'skoda'},make:{brand2:'octavia'}});
+	
+	console.log(anothercar2.brand);
+	
+</script>

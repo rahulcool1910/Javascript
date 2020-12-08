@@ -1,0 +1,25 @@
+<script>
+	//for properties that don't change 
+	function shape()
+	{}
+	shape.prototype.name='base shape';
+	
+	function twodshape(name,age)
+	{
+		this.name=name;
+	}
+	//twodshape.prototype.name='twodshape';
+	
+	twodshape.prototype=new shape();
+	twodshape.prototype.constructor=twodshape;
+	
+	var td=new twodshape("aa",22);
+	console.log(twodshape.prototype.constructor);
+	var anothertwodshape=new td.constructor('ramu',20);
+	//twodshape.prototype.name='after inheritance..';
+	console.log(anothertwodshape.name);
+	
+	
+	console.log(new twodshape('hello').name);
+	console.log(new shape().name);
+</script>

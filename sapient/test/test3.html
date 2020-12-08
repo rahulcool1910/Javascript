@@ -1,0 +1,20 @@
+<script>
+	var myvar1='myvar1111111';
+	function a()
+	{
+		var myvar2='myvar2222222';
+		console.log(myvar1+':'+myvar2);
+		function b()
+		{
+			console.log('b called.....');
+			myvar2='ccccccccccc';
+			var myvar3='myvar3.......333'	;
+			
+		}
+		b();
+		console.log(myvar1+':'+myvar2);
+	}
+	myvar1='blablabla';
+	var obj=new a();
+	
+	</script>

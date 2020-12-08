@@ -1,0 +1,41 @@
+<script>
+	function BiteException(msg)
+	{
+		this.msg=msg;
+	}
+	function RunException(msg)
+	{
+		this.msg=msg;
+	}
+	function Dog()
+	{
+		this.play=function(item)
+		{
+			if(item=='stick')
+			{
+				throw new BiteException('u beat i bite');
+			}
+			else if(item='stone')
+			{
+				throw new RunException('stone i run...');
+			}
+		}
+	}
+	var tiger=new Dog();
+	//try{
+	tiger.play('stone');
+	// }catch(e)
+	// {
+		// if(e instanceof RunException){
+		// console.log('Stone exception...:'+e.msg);}
+		// else if(e instanceof BiteException){
+			// console.log('bite exception..:'+e.msg)
+		// }
+	// }
+	
+	window.onerror = function (msg, url, line) {
+   alert("Message : " + msg );
+   alert("url : " + url );
+   alert("Line number : " + line );
+}
+</script>

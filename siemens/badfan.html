@@ -1,0 +1,43 @@
+<script>
+	function Fan(){
+		this.state=new SwitchOffState();
+		this.pull=function(){
+				this.state.pull(this);
+			}		
+	}
+
+	function State(){}
+	function SwitchOffState(){
+			this.pull=function(fan){
+			console.log("switch off state.......");
+			fan.state=new SwitchOnState();
+			}
+		}
+	function SwitchOnState(){
+			this.pull=function(fan){
+			console.log("switch on state.......");
+			fan.state=new LowSpeedState();
+		}
+	}
+	function LowSpeedState(){
+			this.pull=function(fan){
+				console.log("Low Speed state.......");
+			fan.state=new MediumSpeedState();
+		}
+	}
+	function MediumSpeedState(){
+				this.pull=function(fan){
+				console.log("Medium Speed state.......");
+				fan.state=new HighSpeedState();
+			}
+	}
+	function HighSpeedState(){
+			this.pull=function(fan){
+				console.log("High Speed state.......");
+			fan.state=new SwitchOffState();
+		}
+	}
+
+	var khaitan=new Fan();
+	setInterval("khaitan.pull();", 500);
+</script>

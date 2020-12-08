@@ -1,0 +1,36 @@
+<script>
+	var shoe={name:shoe};
+	var ShoeFactory=function(){
+		
+	}
+	var BataShoeFactory=function(){
+		this.makeShoe=function(){
+			console.log("bsf method called...");
+			return shoe;
+		}
+	}
+	BataShoeFactory.prototype=new ShoeFactory();
+	BataShoeFactory.prototype.constructor=BataShoeFactory;
+	
+	var ShoeShop=function(){
+		var shoefactory;
+		this.setShoeFactory=function(shoefactory){
+			this.shoefactory=shoefactory;
+		}
+	}
+	var RamuShoeShop =function(){
+		
+		this.sellShoe=function(){
+			console.log("ramushoe shop sell shoe method called...");	
+			return this.shoefactory.makeShoe();	
+		}
+	}
+	RamuShoeShop.prototype=new ShoeShop();
+	RamuShoeShop.prototype.constructor=RamuShoeShop();
+	
+	var rss=new RamuShoeShop();
+	var bsf=new BataShoeFactory();
+	rss.setShoeFactory(bsf);//dependency injection
+	console.log(rss.sellShoe());
+	
+</script>

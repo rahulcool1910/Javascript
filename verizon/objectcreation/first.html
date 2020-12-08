@@ -1,0 +1,68 @@
+<script>
+//Object creations different ways... 
+//1. Object constructor way  - 
+	var person = new Object();  
+	person.name = "verizon";  
+	person.getName = function(){  
+    return this.name;  
+	};  
+	
+//2. Literal way/notation
+	var person2 = {  
+    name: "verizon person2",
+    getName:function(){
+    	return this.name;
+    } 
+}  
+//3. Factory function
+var newPerson=function(name){  
+    var result = new Object();  
+    result.name = name;  
+    result.getName = function(){  
+        return this.name;  
+    };  
+    return result;  
+};  
+//4.  Factory function - 2
+var newPerson2=function(name){  
+    return {  
+        name : name,  
+        getName : function(){  
+            return this.name;  
+        };  
+};
+//Function Constructor
+function Person(name){  
+        this.name = name;  
+        this.getName = function(){  
+            return this.name;  
+        };  
+};  
+//Prototype
+function Person(){};  
+Person.prototype.name = "Diego";  
+var personOne = new Person();  
+var personTwo = new Person();  
+
+	function hello()
+	{
+		var personOne = new Person("verizon");  
+		console.log(personOne.getName()); // prints verizon  
+		console.log(personOne instanceOf Person); // prints true  
+		console.log(personOne.constructor === Person); // prints true  
+		console.log(personOne instanceOf Object); // prints true
+
+			var personOne = newPerson("verizon");  
+			var personTwo = newPerson("atos");  
+			console.log(personOne.getName()); 
+			console.log(personTwo.getName());
+		 
+				console.log(person.getName());
+				console.log(person2.getName());
+		
+	}
+</script>
+<form>
+	<input type="button" value="Click me" onclick="hello()">
+	
+</form>

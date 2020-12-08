@@ -1,0 +1,48 @@
+<html>
+	<body>
+		<script>
+		function Paint(){
+			this.displayPaint=function(){
+				return "Color is....:"+this.color;			
+		}
+		}
+		function RedPaint(){
+			this.color="red color";
+		}
+		
+		function BluePaint(){
+			this.color="Blue color";
+		}
+		
+		function GreenPaint(){
+			this.color="Green color";
+		}
+		
+		var p=new Paint();
+		RedPaint.prototype=p;
+		BluePaint.prototype=p;
+		GreenPaint.prototype=p;
+		RedPaint.prototype.constructor=RedPaint;
+		BluePaint.prototype.constructor=BluePaint;
+		GreenPaint.prototype.constructor=GreenPaint;
+		
+		function PaintBrush(){
+			this.setPaint=function(paint){
+			console.log("set method called...");
+				this.paint=paint;
+			}
+			this.doPaint=function(){
+				console.log(this.paint.displayPaint());
+			}
+		}
+		
+		var brush=new PaintBrush();
+		var paint=new RedPaint();
+		brush.setPaint(paint);
+		
+		brush.doPaint();
+		
+
+		</script>
+	</body>
+</html>

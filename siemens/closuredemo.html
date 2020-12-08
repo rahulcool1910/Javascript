@@ -1,0 +1,26 @@
+<script>
+	function Main(){
+		var prop1="hello world..";
+		prop2="hello world 2....";
+		this.prop3="this is hello global....";
+		this.display=function(){
+			prop4="this is hello local 4"
+			var prop5="this is hello local.with var 5."
+			this.prop6="this is hello global local....";
+			console.log(prop1);
+			console.log(prop2);
+			console.log(this.prop3);
+			console.log(prop4);
+			console.log(prop5)
+			console.log(this.prop6);
+		}
+		this.display2=function(){
+			console.log("from display 2..:"+prop4)
+			console.log("From display 2..:"+this.prop5);
+			console.log("From display 2..:"+this.prop6);
+			console.log("From display 2..:"+prop5);
+		}
+	}
+	var m=new Main();
+	console.log(m.prop1+":"+m.prop2+":"+m.prop3+":"+m.prop4+":"+m.prop5);	m.display();	m.display2();
+</script>

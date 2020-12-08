@@ -1,0 +1,13 @@
+<script>
+	var myvar='hello world';
+	
+	var c=(function abc()
+	{
+		return{
+		get:function(){
+		console.log(myvar);
+		}
+		};
+	})();
+	c.get();
+</script>

@@ -1,0 +1,86 @@
+<script>
+	//1. Object constructor way  - 
+	var person=new Object();
+	person.name="verizon";
+	person.getName=function(){
+		return this.name;
+	};
+	
+	console.log(person.getName())
+	
+	//2. Literal way/notation
+	var person2 = {  
+    name: "verizon person2",
+    getName:function(){
+    	return this.name;
+    } 
+   }
+    console.log(person2.getName())
+//Function Constructor
+function Person(name){  
+        this.name = name;  
+        this.getName = function(){  
+            return this.name;  
+        };  
+};
+ var obj=new Person('verizon function constructor');
+ console.log(obj.getName());
+//factory function
+var newPerson=function(name){  
+    var result = new Object();  
+    result.name = name;  
+    result.getName = function(){  
+        return this.name;  
+    };  
+    return result;  
+};  
+var personOne = newPerson("rmz");  
+var personTwo = newPerson("olympia");  
+console.log(personOne.getName()); // prints rmz  
+console.log(personTwo.getName()); // print olympia
+var newPerson2=function(name){  
+    return {  
+        name : name,  
+        getName : function(){  
+            return this.name;  
+        } 
+}  
+}
+var personOne = newPerson2("rmz 2");  
+var personTwo = newPerson2("olympia 2");  
+console.log(personOne.getName()); // prints rmz  
+console.log(personTwo.getName()); // print olympia
+
+
+function Paint(colour)
+{
+	this.colour=colour;	
+}
+function RedPaint()
+{
+	this.getColour=function(){
+		console.log(this.colour);
+	}
+		
+}
+RedPaint.prototype=new Paint("red");//class RedPaint extends Paint
+RedPaint.prototype.constructor=RedPaint;
+var rp=new RedPaint();
+var rp2=new rp.constructor();//duplicate object of rp
+rp.getColour();
+rp2.getColour(); 
+//if you uncomment the line above 3 lines, then this will work.
+//var redpaint=new RedPaint();
+//redpaint.getColour();
+
+RedPaint.prototype.newMethod=function(){return "i am dynamically added...one";}
+console.log(new RedPaint().newMethod());
+
+
+
+
+
+
+
+
+</script>

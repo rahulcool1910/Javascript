@@ -1,0 +1,30 @@
+<script>
+	var jquery=(function(name){
+		var instantiated;
+		console.log("object created....."+name)	;
+		this.init=function(){console.log("init called.....");}
+		var MyObj=function(){
+			console.log("new myobj created....");
+			this.whoami=function(){console.log("who am i called...."+name)}
+		}
+		return {
+			getInstance:function(){
+				if(!instantiated){
+					instantiated=new MyObj();
+					return instantiated;
+				}
+				else{
+					return instantiated;
+				}
+				
+			}
+		}
+		
+	})('verizon');
+	//jquery.init();
+	var myobj=jquery.getInstance();
+	myobj.whoami();
+	var myobj2=jquery.getInstance();
+	var myobj3=jquery.getInstance();
+	
+</script>

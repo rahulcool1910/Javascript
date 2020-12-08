@@ -1,0 +1,14 @@
+<script>
+	var newPerson=function(name){  
+    var result = new Object();  
+    result.name = name;  
+    result.getName = function(){  
+        return this.name;  
+    };  
+    return result;  
+};  
+var personOne = newPerson("Diego");  
+var personTwo = newPerson("Gangelo");  
+console.log(personOne.getName()); // prints Diego  
+console.log(personTwo.getName()); // prints Gangelo
+</script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function Tv(){
+			this.avmode=function(){
+					console.log("avmode started...")
+				}
+		}
+		function SetTopBox(){
+			this.newsChannel=function(){
+					console.log("news channel started....");
+				}
+			this.serialChannel=function(){
+					console.log("serial channel started....");
+				}
+		}
+		function Xbox(){
+			this.switchOff=function(){
+				console.log("xbox switched off.....");
+			}
+		}
+
+		function Command(tv,sbox,xbox){
+			this.tv=tv;this.sbox=sbox;this.xbox=xbox;
+			this.execute=function(){
+				
+			}
+		}
+		function NewsTVCommand(){
+			this.execute=function(){
+				console.log("news channel process started....");
+				this.tv.avmode();
+				this.sbox.newsChannel();
+				this.xbox.switchOff();
+				console.log("enjoy the news channel.....");
+			}
+		}
+		function SerialTVCommand(){
+			this.execute=function(){
+				console.log("serial channel process started....");
+				this.tv.avmode();
+				this.sbox.serialChannel();
+				this.xbox.switchOff();
+				console.log("enjoy the serial channel.....");
+			}
+		}
+		var command=new Command(new Tv(),new SetTopBox(),new Xbox());
+		NewsTVCommand.prototype=command;
+		NewsTVCommand.prototype.constructor=NewsTVCommand;
+		SerialTVCommand.prototype=command;
+		SerialTVCommand.prototype.constructor=SerialTVCommand;
+
+		function DummyCommand(){
+			this.execute=function(){
+					console.log("I am dummy...yet to be operational....")
+				}
+			}
+		DummyCommand.prototype=command;
+		DummyCommand.prototype.constructor=DummyCommand;
+		
+		var commands=[];
+		var seva=(function sevacenter()
+		{
+			function init()
+			{
+				for(var i=0;i<5;i++)
+				{
+					commands[i]=new DummyCommand();				
+				}	
+			}
+			function setSeva(command,slot){
+				commands[slot]=command;
+			}
+			function getSeva(slot)
+			{
+				return commands[slot];
+			}
+			return{
+				getSeva:function()
+				{
+					init();	
+					setSeva(new NewsTVCommand(),1);	
+					setSeva(new SerialTVCommand(),2);				
+				}
+			}				
+		})();
+		seva.getSeva();
+
+		commands[1].execute();
+		commands[2].execute();
+
+			
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function Tv(){
+				this.switchOn=function(){
+						console.log("tv switched on....");
+					}
+				this.switchAvMode=function(){
+						console.log("av mode....");
+					}
+			}
+		function SetTopBox(){
+			this.switchOn=function(){
+					console.log("set top box  switched on....");
+				}
+		}
+		function VGame(){
+			this.vgameoff=function(){
+					console.log("v game switched off.......");
+				}
+		}
+		function SoundSystem(){
+				this.soundOn=function(){
+					console.log("sound system on...");
+					}
+			}
+	function Command(){
+			this.execute=function(){
+					console.log("I am dummy yet to be operational....");
+				}
+		}
+	var tv;var settopbox;var vgame; var sound;
+	function FatherTVCommand(tv,settopbox,vgame,sound){
+		
+					this.tv=tv;this.settopbox=settopbox;this.vgame=vgame;
+					this.sound=sound;
+				
+			this.execute=function(){
+					this.tv.switchOn();
+					this.tv.switchAvMode();
+					this.settopbox.switchOn();
+					this.sound.soundOn();
+				}
+		}
+	function Seva(){
+			this.commands=[];
+			this.init=function(){
+					for (var i=0;i<5;i++){
+							this.commands[i]=new Command();
+						}
+				}
+			this.doSeva=function(slot){
+						this.commands[slot].execute();
+					}
+			this.setSeva=function(command,slot){
+					this.commands[slot]=command;
+				}
+			
+		}
+	 var sevacenter=new Seva();
+	 sevacenter.init();
+	 sevacenter.setSeva(new FatherTVCommand
+			 (new Tv(),new SetTopBox(),new VGame(),new SoundSystem()),2);
+	 
+	 sevacenter.doSeva(2);
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<script>
+var shape=function(){
+	this.name='generic shape',
+	this.toString=function(){return 'The shape is..'+this.name}		
+}
+var twodshape=function(){
+	this.name='two D shape';
+}
+var triangle=function(side,height){
+	this.name='triangle';
+	this.side=side;
+	this.height=height;
+	this.getArea=function(){return this.side*this.height/2;}
+}
+twodshape.prototype=new shape();
+triangle.prototype=new twodshape();
+twodshape.prototype.constructor=twodshape;
+triangle.prototype.constructor=triangle;
+var t=new triangle(2,4);
+console.log(t instanceof triangle);
+console.log(t.toString());
+console.log(t.getArea());
+
+</script>

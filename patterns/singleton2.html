@@ -1,0 +1,27 @@
+<script>
+	
+	var actor=(function(){
+		 	myfunction=function(){
+			console.log('instantiated.....');
+			this.name='hello world'	;
+			this.whoami=function(){return 'i am..:'+this.name;}
+		}
+		 	var s;
+		return{
+			getInstance:function(){
+				 if(this.s==null)
+				 {
+					 this.s=new myfunction();
+				 }
+				 return this.s;
+			}	
+		}
+	})();
+	//var obj=new actor();
+	var sing=actor.getInstance();
+	actor.getInstance();
+	actor.getInstance();
+	console.log(sing.whoami());
+	
+	
+	</script>

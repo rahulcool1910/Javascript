@@ -1,0 +1,95 @@
+<script>
+//Object Constructor 
+	var person=new Object();
+	person.name='ramu';
+	person.getName=function(){return this.name;};
+	
+	console.log(person.getName());
+	var np=person;
+	console.log(np instanceof Object);
+	/**
+	The main advantage of this approach is its simplicity. 
+	On the other hand, instantiating multiple objects of the same type leads 
+	to a lot of code duplication. Moreover, it is not a compact construct 
+	which means it is not intuitively straightforward in pointing out to 
+	where the object's construction ends.
+	*/
+//Literal Constructor
+//While the literal notation is more compact and elegant than the Object constructor, 
+//it is still not reusable.
+var nobitha={
+	name:'nobitha niyan',
+	getName:function(){
+		return this.name;
+	}	
+}
+	console.log(nobitha.getName());
+	
+//Factory function
+var actor2=function(name,age)
+{
+	var resultactor=new Object();
+	resultactor.name=name;resultactor.age=age;
+	resultactor.whoami=function(){return 'i am '+this.name+' and my age is '+this.age;};
+	return resultactor;
+}
+jian2=new actor2('jian2',10);
+console.log(jian2.whoami());
+console.log(jian2 instanceof actor2);//this will return false
+
+//The Factory function allows to encapsulate and re-use the logic for creating similar objects. 
+//It leverages any of the previous constructs for this. 
+var actor=function(name,age)
+{
+	this.name=name;this.age=age;
+	this.whoami=function(){return 'i am '+this.name+' and my age is '+this.age;}	
+}
+jian=new actor('jian',10);console.log(jian.whoami());
+sunio=new actor('sunio',10);console.log(sunio.whoami());
+console.log(jian instanceof actor);
+
+//Function Constructor
+function Person(name){  
+        this.name = name;  
+        this.getName = function(){  
+            return this.name;  
+        };  
+};
+ var obj=new Person('verizon function constructor');//static way
+ console.log(obj.getName());
+
+ obj.personname="hello world";
+ console.log(obj.personname);
+obj.whoAmI=function(){return this.personname;}
+console.log(obj.whoAmI());
+
+var newobj=new obj.constructor("verizon");//deep copy
+console.log(newobj.getName());
+//shallow copy - home work
+
+var o=new window['Person']('verizon verizon');//dynamic class loading..
+console.log(o.getName());
+
+Person.prototype.newfunction=function(){console.log("new function called...");}
+
+var a=new Person("aaa");
+a.newfunction();
+obj.newfunction();
+//a.whoAmI();//this will not work
+
+function Parent(){
+	this.sayHello=function(){return "Welcome ......";}	
+}
+function Child(){
+	
+}
+Child.prototype=new Parent();//this will perform inheritance...
+Child.prototype.constructor=Child;//point your constructor property to child
+var c=new Child();
+console.log(c.sayHello());
+var cc=new c.constructor();//will create object out of a reference-deep copy
+
+console.log(c);
+console.log(cc);
+
+</script>

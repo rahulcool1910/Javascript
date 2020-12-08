@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function Sheep(){
+			console.log("dolly object created...");
+			var name;
+			setName=function(name){this.name=name;}
+			getName=function(){return this.name;}
+		}
+
+		var mother=new Sheep();
+		var dolly=_.clone(mother);
+		console.log(dolly.getName());
+	</script>
+</body>
+</html>
